@@ -14,7 +14,7 @@
                             </div>
                         @endif
 
-    {{Auth::user()->roles->name}}
+    {{Auth::user()->role}}
                     </div>
                 </div>
             </div>
