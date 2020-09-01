@@ -29,7 +29,7 @@
     <meta name="author" content="ThemePixels">
 
 
-    <title>Lanka Tourhub Admin Panel</title>
+    <title>Evans Fashion Admin Panel</title>
 
     <!-- vendor css -->
     <link href="{{asset('admin/lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">

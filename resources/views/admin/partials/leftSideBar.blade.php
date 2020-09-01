@@ -31,8 +31,8 @@
                             <span>Products</span>
                         </a>
                         <ul class="nav-sub">
-                            <li class="nav-item"><a href="{{url('tour_places/create')}}" class="nav-link">Add New Product</a></li>
-                            <li class="nav-item"><a href="{{url('tour_places')}}" class="nav-link">Products List</a></li>
+                            <li class="nav-item"><a href="" class="nav-link">Add New Product</a></li>
+                            <li class="nav-item"><a href="" class="nav-link">Products List</a></li>
                         </ul>
                     </li><!-- nav-item -->
                     <li class="nav-item ">
@@ -41,8 +41,8 @@
                             <span>Product Categories</span>
                         </a>
                         <ul class="nav-sub">
-                            <li class="nav-item"><a href="{{url('drivers/create')}}" class="nav-link">Add New Product Category</a></li>
-                            <li class="nav-item"><a href="{{url('drivers')}}" class="nav-link">Product Category List</a></li>
+                            <li class="nav-item"><a href="" class="nav-link">Add New Product Category</a></li>
+                            <li class="nav-item"><a href="" class="nav-link">Product Category List</a></li>
 
                         </ul>
                     </li>
@@ -61,18 +61,27 @@
                         </ul>
                     </li><!-- nav-item -->
                 @elsecan('isManager')
-                    <li class="nav-item">
+                    <li class="nav-item ">
                         <a href="" class="nav-link with-sub">
                             <i class="icon ion-ios-bookmarks-outline"></i>
-                            <span>Tour Places</span>
+                            <span>Products</span>
                         </a>
                         <ul class="nav-sub">
-                            <li class="nav-item"><a href="blank.html" class="nav-link">Blank Page</a></li>
-                            <li class="nav-item"><a href="page-signin.html" class="nav-link">Signin Page</a></li>
-                            <li class="nav-item"><a href="page-signup.html" class="nav-link">Signup Page</a></li>
-                            <li class="nav-item"><a href="page-notfound.html" class="nav-link">404 Page Not Found</a></li>
+                            <li class="nav-item"><a href="" class="nav-link">Add New Product</a></li>
+                            <li class="nav-item"><a href="" class="nav-link">Products List</a></li>
                         </ul>
                     </li><!-- nav-item -->
+                    <li class="nav-item ">
+                        <a href="" class="nav-link with-sub">
+                            <i class="icon ion-ios-bookmarks-outline"></i>
+                            <span>Product Categories</span>
+                        </a>
+                        <ul class="nav-sub">
+                            <li class="nav-item"><a href="" class="nav-link">Add New Product Category</a></li>
+                            <li class="nav-item"><a href="" class="nav-link">Product Category List</a></li>
+
+                        </ul>
+                    </li>
                 @endcan
 
             </ul>
