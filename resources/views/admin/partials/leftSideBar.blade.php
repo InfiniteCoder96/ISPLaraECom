@@ -28,11 +28,21 @@
                     <li class="nav-item ">
                         <a href="" class="nav-link with-sub">
                             <i class="icon ion-ios-bookmarks-outline"></i>
+                            <span>Orders</span>
+                        </a>
+                        <ul class="nav-sub">
+                            <li class="nav-item"><a href="{{route('orders.index')}}" class="nav-link">Orders List</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="" class="nav-link with-sub">
+                            <i class="icon ion-ios-bookmarks-outline"></i>
                             <span>Products</span>
                         </a>
                         <ul class="nav-sub">
-                            <li class="nav-item"><a href="" class="nav-link">Add New Product</a></li>
-                            <li class="nav-item"><a href="" class="nav-link">Products List</a></li>
+                            <li class="nav-item"><a href="{{route('products.create')}}" class="nav-link">Add New Product</a></li>
+                            <li class="nav-item"><a href="{{route('products.index')}}" class="nav-link">Products List</a></li>
                         </ul>
                     </li><!-- nav-item -->
                     <li class="nav-item ">
@@ -41,8 +51,8 @@
                             <span>Product Categories</span>
                         </a>
                         <ul class="nav-sub">
-                            <li class="nav-item"><a href="" class="nav-link">Add New Product Category</a></li>
-                            <li class="nav-item"><a href="" class="nav-link">Product Category List</a></li>
+                            <li class="nav-item"><a href="{{route('productCategories.create')}}" class="nav-link">Add New Product Category</a></li>
+                            <li class="nav-item"><a href="{{route('productCategories.index')}}" class="nav-link">Product Category List</a></li>
 
                         </ul>
                     </li>

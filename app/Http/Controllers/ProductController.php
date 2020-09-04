@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\ProductCategory;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -25,8 +26,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::latest();
-        return view('products.index',compact('products'));
+        $products = Product::all();
+        return view('admin.products.index',compact('products'));
     }
 
     /**
@@ -36,7 +37,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        $productCategories = ProductCategory::all();
+        return view('admin.products.create', compact('productCategories'));
     }
 
     /**
@@ -49,10 +51,36 @@ class ProductController extends Controller
     {
         request()->validate([
             'name' => 'required',
-            'detail' => 'required',
+            'description' => 'required',
+            'category' => 'required',
+            'price' => 'required|numeric',
+            'main_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'sub_image_1' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'sub_image_2' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
-        Product::create($request->all());
+        $storePath = 'store/img/products/';
+
+        $mainImageName = $request->name.'_main'.'.'.$request->main_image->extension();
+        $request->main_image->move(public_path('store/img/products'), $mainImageName);
+
+        $subImageName1 = $request->name.'_sub_1'.'.'.$request->sub_image_1->extension();
+        $request->sub_image_1->move(public_path('store/img/products'), $subImageName1);
+
+        $subImageName2 = $request->name.'_sub_2'.'.'.$request->sub_image_2->extension();
+        $request->sub_image_2->move(public_path('store/img/products'), $subImageName2);
+
+        $product = new Product();
+
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->category = $request->category;
+        $product->price = $request->price;
+        $product->main_image = $storePath . $mainImageName;
+        $product->sub_image_1 = $storePath . $subImageName1;
+        $product->sub_image_2 = $storePath . $subImageName2;
+
+        $product->save();
 
         return redirect()->route('products.index')
             ->with('success','Product created successfully.');
@@ -66,7 +94,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('products.show',compact('product'));
+        return view('admin.products.show',compact('product'));
     }
 
     /**
@@ -77,7 +105,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('products.edit',compact('product'));
+        return view('admin.products.edit',compact('product'));
     }
 
     /**
