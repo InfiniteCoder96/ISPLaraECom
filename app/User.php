@@ -41,8 +41,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function roles()
+    public function Cart()
     {
-        return $this->belongsTo('Spatie\Permission\Models\Role', 'role', 'id');
+        return $this->belongsTo(Cart::class, 'id');
     }
+
+    public function Orders()
+    {
+        return $this->hasMany(Order::class, 'id');
+    }
+
 }

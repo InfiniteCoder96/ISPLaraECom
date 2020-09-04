@@ -96,55 +96,42 @@
                 </div>
                 <div class="col-lg-3 text-right col-md-3">
                     <ul class="nav-right">
-                        <li class="heart-icon">
-                            <a href="#">
-                                <i class="icon_heart_alt"></i>
-                                <span>1</span>
-                            </a>
-                        </li>
+
                         <li class="cart-icon">
                             <a href="#">
                                 <i class="icon_bag_alt"></i>
-                                <span>3</span>
+                                <span>{{$cart_products_tot}}</span>
                             </a>
                             <div class="cart-hover">
                                 <div class="select-items">
                                     <table>
                                         <tbody>
+                                        @php($tot_cart_value = 0)
+                                        @foreach($cart_products as $product)
                                         <tr>
-                                            <td class="si-pic"><img src="{{asset('store/img/select-product-1.jpg')}}" alt=""></td>
+                                            <td class="si-pic"><img src="{{asset($product->Products->main_image)}}" alt=""></td>
                                             <td class="si-text">
                                                 <div class="product-selected">
-                                                    <p>$60.00 x 1</p>
-                                                    <h6>Kabino Bedside Table</h6>
+                                                    <p>Rs.{{$product->Products->price}}</p>
+                                                    <h6>{{$product->Products->name}}</h6>
                                                 </div>
                                             </td>
                                             <td class="si-close">
                                                 <i class="ti-close"></i>
                                             </td>
+                                            {{$tot_cart_value += $product->Products->price}}
                                         </tr>
-                                        <tr>
-                                            <td class="si-pic"><img src="{{asset('store/img/select-product-2.jpg')}}" alt=""></td>
-                                            <td class="si-text">
-                                                <div class="product-selected">
-                                                    <p>$60.00 x 1</p>
-                                                    <h6>Kabino Bedside Table</h6>
-                                                </div>
-                                            </td>
-                                            <td class="si-close">
-                                                <i class="ti-close"></i>
-                                            </td>
-                                        </tr>
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>
                                 <div class="select-total">
                                     <span>total:</span>
-                                    <h5>$120.00</h5>
+                                    <h5>Rs.{{$tot_cart_value}}</h5>
                                 </div>
                                 <div class="select-button">
-                                    <a href="#" class="primary-btn view-card">VIEW CARD</a>
-                                    <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
+                                    <a href="{{route('carts.index')}}" class="primary-btn view-card">VIEW CART</a>
+                                    <a href="{{url('checkout')}}" class="primary-btn checkout-btn">CHECK OUT</a>
                                 </div>
                             </div>
                         </li>
@@ -236,6 +223,7 @@
 <div class="banner-section spad">
     <div class="container-fluid">
         <div class="row">
+
             <div class="col-lg-4">
                 <div class="single-banner">
                     <img src="{{asset('store/img/banner-1.jpg')}}" alt="">
@@ -260,6 +248,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
@@ -270,7 +259,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-3">
-                <div class="product-large set-bg" data-setbg="img/products/women-large.jpg">
+                <div class="product-large set-bg" data-setbg="{{asset('store/img/products/women-large.jpg')}}">
                     <h2>Women’s</h2>
                     <a href="#">Discover More</a>
                 </div>
@@ -285,96 +274,32 @@
                     </ul>
                 </div>
                 <div class="product-slider owl-carousel">
+                    @foreach($products as $product)
                     <div class="product-item">
                         <div class="pi-pic">
-                            <img src="{{asset('store/img/products/women-1.jpg')}}" alt="">
+                            <img src="{{asset($product->main_image)}}" alt="">
                             <div class="sale">Sale</div>
                             <div class="icon">
                                 <i class="icon_heart_alt"></i>
                             </div>
                             <ul>
-                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                <li class="w-icon active"><a href="{{url('addToCart?product_id='.$product->id.'&quantity=1')}}"><i class="icon_bag_alt"></i></a></li>
                                 <li class="quick-view"><a href="#">+ Quick View</a></li>
                                 <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                             </ul>
                         </div>
                         <div class="pi-text">
-                            <div class="catagory-name">Coat</div>
+                            <div class="catagory-name">{{$product->Category->name}}</div>
                             <a href="#">
-                                <h5>Pure Pineapple</h5>
+                                <h5>{{$product->name}}</h5>
                             </a>
                             <div class="product-price">
-                                $14.00
-                                <span>$35.00</span>
+                                Rs.{{$product->price}}
+                                <span>Rs.50000.00</span>
                             </div>
                         </div>
                     </div>
-                    <div class="product-item">
-                        <div class="pi-pic">
-                            <img src="{{asset('store/img/products/women-2.jpg')}}" alt="">
-                            <div class="icon">
-                                <i class="icon_heart_alt"></i>
-                            </div>
-                            <ul>
-                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="pi-text">
-                            <div class="catagory-name">Shoes</div>
-                            <a href="#">
-                                <h5>Guangzhou sweater</h5>
-                            </a>
-                            <div class="product-price">
-                                $13.00
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-item">
-                        <div class="pi-pic">
-                            <img src="{{asset('store/img/products/women-3.jpg')}}" alt="">
-                            <div class="icon">
-                                <i class="icon_heart_alt"></i>
-                            </div>
-                            <ul>
-                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="pi-text">
-                            <div class="catagory-name">Towel</div>
-                            <a href="#">
-                                <h5>Pure Pineapple</h5>
-                            </a>
-                            <div class="product-price">
-                                $34.00
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-item">
-                        <div class="pi-pic">
-                            <img src="{{asset('store/img/products/women-4.jpg')}}" alt="">
-                            <div class="icon">
-                                <i class="icon_heart_alt"></i>
-                            </div>
-                            <ul>
-                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="pi-text">
-                            <div class="catagory-name">Towel</div>
-                            <a href="#">
-                                <h5>Converse Shoes</h5>
-                            </a>
-                            <div class="product-price">
-                                $34.00
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -383,7 +308,7 @@
 <!-- Women Banner Section End -->
 
 <!-- Deal Of The Week Section Begin-->
-<section class="deal-of-week set-bg spad" data-setbg="img/time-bg.jpg">
+<section class="deal-of-week set-bg spad" data-setbg="{{asset('store/img/time-bg.jpg')}}">
     <div class="container">
         <div class="col-lg-6 text-center">
             <div class="section-title">
@@ -419,156 +344,40 @@
 </section>
 <!-- Deal Of The Week Section End -->
 
-<!-- Man Banner Section Begin -->
-<section class="man-banner spad">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="filter-control">
-                    <ul>
-                        <li class="active">Clothings</li>
-                        <li>HandBag</li>
-                        <li>Shoes</li>
-                        <li>Accessories</li>
-                    </ul>
-                </div>
-                <div class="product-slider owl-carousel">
-                    <div class="product-item">
-                        <div class="pi-pic">
-                            <img src="img/products/man-1.jpg" alt="">
-                            <div class="sale">Sale</div>
-                            <div class="icon">
-                                <i class="icon_heart_alt"></i>
-                            </div>
-                            <ul>
-                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="pi-text">
-                            <div class="catagory-name">Coat</div>
-                            <a href="#">
-                                <h5>Pure Pineapple</h5>
-                            </a>
-                            <div class="product-price">
-                                $14.00
-                                <span>$35.00</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-item">
-                        <div class="pi-pic">
-                            <img src="{{asset('store/img/products/man-2.jpg')}}" alt="">
-                            <div class="icon">
-                                <i class="icon_heart_alt"></i>
-                            </div>
-                            <ul>
-                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="pi-text">
-                            <div class="catagory-name">Shoes</div>
-                            <a href="#">
-                                <h5>Guangzhou sweater</h5>
-                            </a>
-                            <div class="product-price">
-                                $13.00
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-item">
-                        <div class="pi-pic">
-                            <img src="{{asset('store/img/products/man-3.jpg')}}" alt="">
-                            <div class="icon">
-                                <i class="icon_heart_alt"></i>
-                            </div>
-                            <ul>
-                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="pi-text">
-                            <div class="catagory-name">Towel</div>
-                            <a href="#">
-                                <h5>Pure Pineapple</h5>
-                            </a>
-                            <div class="product-price">
-                                $34.00
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-item">
-                        <div class="pi-pic">
-                            <img src="{{asset('store/img/products/man-4.jpg')}}" alt="">
-                            <div class="icon">
-                                <i class="icon_heart_alt"></i>
-                            </div>
-                            <ul>
-                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="pi-text">
-                            <div class="catagory-name">Towel</div>
-                            <a href="#">
-                                <h5>Converse Shoes</h5>
-                            </a>
-                            <div class="product-price">
-                                $34.00
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 offset-lg-1">
-                <div class="product-large set-bg m-large" data-setbg="img/products/man-large.jpg">
-                    <h2>Men’s</h2>
-                    <a href="#">Discover More</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Man Banner Section End -->
 
 <!-- Instagram Section Begin -->
 <div class="instagram-photo">
-    <div class="insta-item set-bg" data-setbg="img/insta-1.jpg">
+    <div class="insta-item set-bg" data-setbg="{{asset('store/img/insta-1.jpg')}}">
         <div class="inside-text">
             <i class="ti-instagram"></i>
             <h5><a href="#">colorlib_Collection</a></h5>
         </div>
     </div>
-    <div class="insta-item set-bg" data-setbg="img/insta-2.jpg">
+    <div class="insta-item set-bg" data-setbg="{{asset('store/img/insta-2.jpg')}}">
         <div class="inside-text">
             <i class="ti-instagram"></i>
             <h5><a href="#">colorlib_Collection</a></h5>
         </div>
     </div>
-    <div class="insta-item set-bg" data-setbg="img/insta-3.jpg">
+    <div class="insta-item set-bg" data-setbg="{{asset('store/img/insta-3.jpg')}}">
         <div class="inside-text">
             <i class="ti-instagram"></i>
             <h5><a href="#">colorlib_Collection</a></h5>
         </div>
     </div>
-    <div class="insta-item set-bg" data-setbg="img/insta-4.jpg">
+    <div class="insta-item set-bg" data-setbg="{{asset('store/img/insta-4.jpg')}}">
         <div class="inside-text">
             <i class="ti-instagram"></i>
             <h5><a href="#">colorlib_Collection</a></h5>
         </div>
     </div>
-    <div class="insta-item set-bg" data-setbg="img/insta-5.jpg">
+    <div class="insta-item set-bg" data-setbg="{{asset('store/img/insta-5.jpg')}}">
         <div class="inside-text">
             <i class="ti-instagram"></i>
             <h5><a href="#">colorlib_Collection</a></h5>
         </div>
     </div>
-    <div class="insta-item set-bg" data-setbg="img/insta-6.jpg">
+    <div class="insta-item set-bg" data-setbg="{{asset('store/img/insta-6.jpg')}}">
         <div class="inside-text">
             <i class="ti-instagram"></i>
             <h5><a href="#">colorlib_Collection</a></h5>

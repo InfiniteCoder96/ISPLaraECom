@@ -1,5 +1,8 @@
 <?php
 
+use App\Cart;
+use App\Product;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +17,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $products = Product::all();
+    $user_id = Auth::id();
+    $cart_products = Cart::all()->where('user_id', '=', $user_id);
+    $cart_products_tot = sizeof($cart_products);
+    return view('welcome', compact('products','cart_products','cart_products_tot'));
 });
 
 // store routes
@@ -28,5 +35,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');
     Route::resource('users','UserController');
+    Route::resource('permissions','PermissionController');
     Route::resource('products','ProductController');
+    Route::resource('productCategories','ProductCategoryController');
+    Route::resource('carts','CartController');
+    Route::resource('orders','OrderController');
+    Route::get('/addToCart', 'CartController@addToCart')->name('addToCart');
+    Route::get('/checkout', 'OrderController@checkout')->name('checkout');
 });
