@@ -17,7 +17,7 @@
 
                     @auth
                         <a href="{{ url('/home') }}" class="login-panel"><i class="fa fa-user"></i>Home</a>
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                        <a href="{{ route('logout') }}" class="login-panel" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                             <i class="icon ion-power"></i> Sign Out
                         </a>
