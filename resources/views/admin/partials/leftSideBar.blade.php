@@ -25,73 +25,104 @@
                 </li><!-- nav-item -->
                 <li class="header">Primary Data</li>
                 @can('isAdmin')
-                    <li class="nav-item ">
-                        <a href="" class="nav-link with-sub">
-                            <i class="icon ion-ios-bookmarks-outline"></i>
-                            <span>Orders</span>
-                        </a>
-                        <ul class="nav-sub">
-                            <li class="nav-item"><a href="{{route('orders.index')}}" class="nav-link">Orders List</a></li>
+                <li class="nav-item ">
+                    <a href="" class="nav-link with-sub">
+                        <i class="icon ion-ios-bookmarks-outline"></i>
+                        <span>Orders</span>
+                    </a>
+                    <ul class="nav-sub">
+                        <li class="nav-item"><a href="{{route('orders.index')}}" class="nav-link">Orders List</a></li>
 
-                        </ul>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="" class="nav-link with-sub">
-                            <i class="icon ion-ios-bookmarks-outline"></i>
-                            <span>Products</span>
-                        </a>
-                        <ul class="nav-sub">
-                            <li class="nav-item"><a href="{{route('products.create')}}" class="nav-link">Add New Product</a></li>
-                            <li class="nav-item"><a href="{{route('products.index')}}" class="nav-link">Products List</a></li>
-                        </ul>
-                    </li><!-- nav-item -->
-                    <li class="nav-item ">
-                        <a href="" class="nav-link with-sub">
-                            <i class="icon ion-ios-bookmarks-outline"></i>
-                            <span>Product Categories</span>
-                        </a>
-                        <ul class="nav-sub">
-                            <li class="nav-item"><a href="{{route('productCategories.create')}}" class="nav-link">Add New Product Category</a></li>
-                            <li class="nav-item"><a href="{{route('productCategories.index')}}" class="nav-link">Product Category List</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item ">
+                    <a href="" class="nav-link with-sub">
+                        <i class="icon ion-ios-bookmarks-outline"></i>
+                        <span>Deliveries</span>
+                    </a>
+                    <ul class="nav-sub">
+                        <li class="nav-item"><a href="{{url('deliveries')}}" class="nav-link">Delivery List</a></li>
 
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link with-sub">
-                            <i class="icon ion-ios-bookmarks-outline"></i>
-                            <span>User Management</span>
-                        </a>
-                        <ul class="nav-sub">
+                    </ul>
+                </li>
+                <li class="nav-item ">
+                    <a href="" class="nav-link with-sub">
+                        <i class="icon ion-ios-bookmarks-outline"></i>
+                        <span>Products</span>
+                    </a>
+                    <ul class="nav-sub">
+                        <li class="nav-item"><a href="{{route('products.create')}}" class="nav-link">Add New Product</a></li>
+                        <li class="nav-item"><a href="{{route('products.index')}}" class="nav-link">Products List</a></li>
+                    </ul>
+                </li><!-- nav-item -->
+                <li class="nav-item ">
+                    <a href="" class="nav-link with-sub">
+                        <i class="icon ion-ios-bookmarks-outline"></i>
+                        <span>Product Categories</span>
+                    </a>
+                    <ul class="nav-sub">
+                        <li class="nav-item"><a href="{{route('productCategories.create')}}" class="nav-link">Add New Product Category</a></li>
+                        <li class="nav-item"><a href="{{route('productCategories.index')}}" class="nav-link">Product Category List</a></li>
 
-                            <li class="nav-item"><a href="{{url('users/create')}}" class="nav-link">Add new user</a></li>
-                            <li class="nav-item"><a href="{{url('users')}}" class="nav-link">All users</a></li>
-                            <li class="nav-item"><a href="{{url('roles')}}" class="nav-link">User roles</a></li>
-                            <li class="nav-item"><a href="{{url('permissions')}}" class="nav-link">Role permissions</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link with-sub">
+                        <i class="icon ion-ios-bookmarks-outline"></i>
+                        <span>User Management</span>
+                    </a>
+                    <ul class="nav-sub">
 
-                        </ul>
-                    </li><!-- nav-item -->
+                        <li class="nav-item"><a href="{{url('users/create')}}" class="nav-link">Add new user</a></li>
+                        <li class="nav-item"><a href="{{url('users')}}" class="nav-link">All users</a></li>
+                        <li class="nav-item"><a href="{{url('roles')}}" class="nav-link">User roles</a></li>
+                        <li class="nav-item"><a href="{{url('permissions')}}" class="nav-link">Role permissions</a></li>
+
+                    </ul>
+                </li><!-- nav-item -->
+                <li class="nav-item">
+                    <a href="" class="nav-link with-sub">
+                        <i class="icon ion-ios-bookmarks-outline"></i>
+                        <span>Supplier Management</span>
+                    </a>
+                    <ul class="nav-sub">
+
+                        <li class="nav-item"><a href="{{url('suppliers/create')}}" class="nav-link">Add new supplier</a></li>
+                        <li class="nav-item"><a href="{{url('suppliers')}}" class="nav-link">All suppliers</a></li>
+                    </ul>
+                </li><!-- nav-item -->
                 @elsecan('isManager')
-                    <li class="nav-item ">
-                        <a href="" class="nav-link with-sub">
-                            <i class="icon ion-ios-bookmarks-outline"></i>
-                            <span>Products</span>
-                        </a>
-                        <ul class="nav-sub">
-                            <li class="nav-item"><a href="" class="nav-link">Add New Product</a></li>
-                            <li class="nav-item"><a href="" class="nav-link">Products List</a></li>
-                        </ul>
-                    </li><!-- nav-item -->
-                    <li class="nav-item ">
-                        <a href="" class="nav-link with-sub">
-                            <i class="icon ion-ios-bookmarks-outline"></i>
-                            <span>Product Categories</span>
-                        </a>
-                        <ul class="nav-sub">
-                            <li class="nav-item"><a href="" class="nav-link">Add New Product Category</a></li>
-                            <li class="nav-item"><a href="" class="nav-link">Product Category List</a></li>
+                <li class="nav-item">
+                    <a href="" class="nav-link with-sub">
+                        <i class="icon ion-ios-bookmarks-outline"></i>
+                        <span>Products</span>
+                    </a>
+                    <ul class="nav-sub">
+                        <li class="nav-item"><a href="{{url('products/create')}}" class="nav-link">Add New Product</a></li>
+                        <li class="nav-item"><a href="{{url('products')}}" class="nav-link">Products List</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item ">
+                    <a href="" class="nav-link with-sub">
+                        <i class="icon ion-ios-bookmarks-outline"></i>
+                        <span>Deliveries</span>
+                    </a>
+                    <ul class="nav-sub">
+                        <li class="nav-item"><a href="{{url('deliveries')}}" class="nav-link">Delivery List</a></li>
 
-                        </ul>
-                    </li>
+                    </ul>
+                </li>
+                @elsecan('isSupplier')
+                <li class="nav-item ">
+                    <a href="" class="nav-link with-sub">
+                        <i class="icon ion-ios-bookmarks-outline"></i>
+                        <span>Orders</span>
+                    </a>
+                    <ul class="nav-sub">
+                        <li class="nav-item"><a href="{{route('orders.index')}}" class="nav-link">Orders List</a></li>
+
+                    </ul>
+                </li>
                 @endcan
 
             </ul>
