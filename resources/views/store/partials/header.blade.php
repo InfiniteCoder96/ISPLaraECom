@@ -17,6 +17,14 @@
 
                     @auth
                         <a href="{{ url('/home') }}" class="login-panel"><i class="fa fa-user"></i>Home</a>
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            <i class="icon ion-power"></i> Sign Out
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     @else
                         <a href="{{ route('login') }}" class="login-panel"><i class="fa fa-user"></i>Login</a>
 
