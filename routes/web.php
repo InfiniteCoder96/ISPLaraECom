@@ -40,6 +40,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('productCategories','ProductCategoryController');
     Route::resource('carts','CartController');
     Route::resource('orders','OrderController');
+    Route::resource('suppliers','SupplierController');
+    Route::resource('deliveries','DeliveryController');
     Route::get('/addToCart', 'CartController@addToCart')->name('addToCart');
     Route::get('/checkout', 'OrderController@checkout')->name('checkout');
 });
