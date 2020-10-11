@@ -32,20 +32,21 @@ class HomeController extends Controller
         $products = Product::all();
         $orders = Order::all();
         $tot_orders = sizeof($orders);
-        $tot_users = sizeof(User::all()->where('role','=','user'));
+        $tot_users = sizeof(User::all()->where('role', '=', 'user'));
         $tot_products = sizeof(Product::all());
         $tot_revenue = 0;
 
-        foreach ($orders as $order){
+        foreach ($orders as $order) {
             $tot_revenue += $order->quantity * $order->Products->price;
         }
 
         if (Gate::allows('isAdmin')) {
-            return view('admin.dashboard', compact('tot_orders','tot_users','tot_products','tot_revenue'));
-        } else if(Gate::allows('isManager')){
-            return view('admin.dashboard', compact('tot_orders','tot_users','tot_products','tot_revenue'));
-        }
-        else if(Gate::allows('isUser')){
+            return view('admin.dashboard', compact('tot_orders', 'tot_users', 'tot_products', 'tot_revenue'));
+        } else if (Gate::allows('isManager')) {
+            return view('admin.dashboard', compact('tot_orders', 'tot_users', 'tot_products', 'tot_revenue'));
+        } else if (Gate::allows('isSupplier')) {
+            return view('admin.dashboard', compact('tot_orders', 'tot_users', 'tot_products', 'tot_revenue'));
+        } else if (Gate::allows('isUser')) {
 
 
             $user_id = Auth::id();
@@ -53,7 +54,7 @@ class HomeController extends Controller
 
             $cart_products_tot = sizeof($cart_products);
 
-            return view('welcome', compact('products','cart_products','cart_products_tot'));
+            return view('welcome', compact('products', 'cart_products', 'cart_products_tot'));
         }
     }
 }

@@ -35,23 +35,43 @@
                 <div class="col-lg-6 offset-lg-3">
                     <div class="register-form">
                         <h2>Register</h2>
-                        <form action="#">
+                        <form method="POST" action="{{ route('register') }}">
+                            @csrf
                             <div class="group-input">
-                                <label for="username">Username or email address *</label>
-                                <input type="text" id="username">
+                                <label for="username">Name *</label>
+                                <input type="text" id="name" name="name" class="@error('email') is-invalid @enderror" value="{{ old('name') }}" required autofocus>
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="group-input">
+                                <label for="username">Email address *</label>
+                                <input type="text" id="email" name="email" class="@error('email') is-invalid @enderror" value="{{ old('email') }}" required>
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="group-input">
                                 <label for="pass">Password *</label>
-                                <input type="text" id="pass">
+                                <input type="text" id="password" name="password" class="@error('password') is-invalid @enderror" required autocomplete="current-password">
+                                @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="group-input">
                                 <label for="con-pass">Confirm Password *</label>
-                                <input type="text" id="con-pass">
+                                <input type="text" id="con-pass" name="password_confirmation">
                             </div>
                             <button type="submit" class="site-btn register-btn">REGISTER</button>
                         </form>
                         <div class="switch-login">
-                            <a href="./login.html" class="or-login">Or Login</a>
+                            <a href="{{ route('login') }}" class="or-login">Or Login</a>
                         </div>
                     </div>
                 </div>

@@ -39,5 +39,10 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('isUser', function($user) {
             return $user->role == 'user';
         });
+
+        /* define a supplier role */
+        Gate::define('isSupplier', function($user) {
+            return $user->role == 'supplier';
+        });
     }
 }

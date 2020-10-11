@@ -400,6 +400,7 @@
                                             <span>$35.00</span>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
