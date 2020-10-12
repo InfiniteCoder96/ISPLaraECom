@@ -48,4 +48,5 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('delpdf','DeliveryController@createPDF')->name('createPDF');
     Route::get('propdf','ProductController@createPDF')->name('createPDF');
     Route::get('suppdf','SupplierController@createPDF')->name('createPDF');
+
 });
