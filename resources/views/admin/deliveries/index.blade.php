@@ -21,6 +21,11 @@
 
     <table class="table table-bordered">
         <tr>
+            <div class="d-flex justify-content-end mb-4">
+                <a class="btn btn-primary" href={{ url('delpdf') }}>Export to PDF</a>
+            </div>
+        </tr>
+        <tr>
 
             <th>Product Name</th>
             <th>Customer Name</th>

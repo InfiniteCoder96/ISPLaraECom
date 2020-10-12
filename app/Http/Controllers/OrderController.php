@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+use PDF;
+
 class OrderController extends Controller
 {
 
@@ -90,7 +92,7 @@ class OrderController extends Controller
 
         // share data to view
         view()->share('orders',$data);
-        $pdf = PDF::loadView('pdf_view', $data);
+        $pdf = PDF::loadView('admin.pdf.orders_pdf', $data);
 
         // download PDF file with download method
         return $pdf->download('pdf_file.pdf');

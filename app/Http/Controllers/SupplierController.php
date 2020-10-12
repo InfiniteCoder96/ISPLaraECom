@@ -71,5 +71,17 @@ class SupplierController extends Controller
         return redirect('./suppliers')->with('success','Supplier has been  deleted');
     }
 
+    public function createPDF() {
+        // retreive all records from db
+        $data = Supplier::all();
+
+        // share data to view
+        view()->share('deliveries',$data);
+        $pdf = PDF::loadView('admin.pdf.supplier_pdf', $data);
+
+        // download PDF file with download method
+        return $pdf->download('pdf_file.pdf');
+    }
+
 
 }

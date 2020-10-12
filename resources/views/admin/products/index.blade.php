@@ -25,6 +25,11 @@
 
     <table class="table table-bordered">
         <tr>
+            <div class="d-flex justify-content-end mb-4">
+                <a class="btn btn-primary" href={{ url('propdf') }}>Export to PDF</a>
+            </div>
+        </tr>
+        <tr>
             <th>No</th>
             <th>Name</th>
             <th>Description</th>
