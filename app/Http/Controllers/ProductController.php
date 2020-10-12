@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\ProductCategory;
 use Illuminate\Http\Request;
+use PDF;
 
 class ProductController extends Controller
 {
@@ -141,5 +142,17 @@ class ProductController extends Controller
 
         return redirect()->route('products.index')
             ->with('success','Product deleted successfully');
+    }
+
+    public function createPDF() {
+        // retreive all records from db
+        $data = Product::all();
+
+        // share data to view
+        view()->share('products',$data);
+        $pdf = PDF::loadView('admin.pdf.product_pdf', $data);
+
+        // download PDF file with download method
+        return $pdf->download('pdf_file.pdf');
     }
 }

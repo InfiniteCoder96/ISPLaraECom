@@ -3,7 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Delivery;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
+
+use PDF;
 
 class DeliveryController extends Controller
 {
@@ -67,5 +73,17 @@ class DeliveryController extends Controller
         $delivery = Delivery::find($id);
         $delivery->delete();
         return redirect('./deliveries')->with('success','Delivery has been  deleted');
+    }
+
+    public function createPDF() {
+        // retreive all records from db
+        $data = Delivery::all();
+
+        // share data to view
+        view()->share('deliveries',$data);
+        $pdf = PDF::loadView('admin.pdf.delivery_pdf', $data);
+
+        // download PDF file with download method
+        return $pdf->download('pdf_file.pdf');
     }
 }

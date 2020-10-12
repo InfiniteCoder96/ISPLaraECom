@@ -45,4 +45,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/addToCart', 'CartController@addToCart')->name('addToCart');
     Route::get('/checkout', 'OrderController@checkout')->name('checkout');
     Route::get('pdf','OrderController@createPDF')->name('createPDF');
+    Route::get('delpdf','DeliveryController@createPDF')->name('createPDF');
+    Route::get('propdf','ProductController@createPDF')->name('createPDF');
+    Route::get('suppdf','SupplierController@createPDF')->name('createPDF');
+
 });
