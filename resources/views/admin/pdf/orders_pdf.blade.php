@@ -21,11 +21,6 @@
 
     <table class="table table-bordered">
         <tr>
-            <div class="d-flex justify-content-end mb-4">
-                <a class="btn btn-primary" href="{{ URL::to('admin/pdf/orders_pdf') }}">Export to PDF</a>
-            </div>
-        </tr>
-        <tr>
             <th>No</th>
             <th>User Name</th>
             <th>Product</th>
@@ -40,21 +35,7 @@
                 <td>{{ $order->Products->name }}</td>
                 <td>{{ $order->quantity }}</td>
                 <td>{{ $order->quantity * $order->Products->price }}</td>
-                <td>
-                    <form action="{{ route('products.destroy',$order->id) }}" method="POST">
-                        <a class="btn btn-info" href="{{ route('products.show',$order->id) }}">Show</a>
-                        @can('product-edit')
-                            <a class="btn btn-primary" href="{{ route('products.edit',$order->id) }}">Edit</a>
-                        @endcan
 
-
-                        @csrf
-                        @method('DELETE')
-                        @can('product-delete')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        @endcan
-                    </form>
-                </td>
             </tr>
         @endforeach
     </table>

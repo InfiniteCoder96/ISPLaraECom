@@ -44,4 +44,5 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('deliveries','DeliveryController');
     Route::get('/addToCart', 'CartController@addToCart')->name('addToCart');
     Route::get('/checkout', 'OrderController@checkout')->name('checkout');
+    Route::get('/orders/pdf','OrderController@createPDF');
 });
