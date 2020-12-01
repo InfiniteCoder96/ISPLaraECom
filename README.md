@@ -4,6 +4,11 @@
 ISP Laravel Ecommerce Website
 </h3>
 
+
+## You'll Need to install following Software/Libraries
+- XAMPP / WAMP server
+- Composer (PHP package manager)
+
 ## How to setup this project
 
 Please follow following steps to setup this project in your machine
